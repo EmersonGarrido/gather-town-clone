@@ -1,19 +1,81 @@
-/* src/App.css */
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+}
 .App {
   text-align: center;
+  background: black;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
 }
 
 .map {
   position: relative;
-  width: 800px;
-  height: 600px;
-  border: 1px solid #000;
-  margin: 0 auto;
+  width: 1000px;  
+  height: 1000px; 
+  background-image: url('/map.png'); 
+  background-size: cover;
+  margin: 0;
+  transition: transform 0.1s ease-in-out; 
 }
 
 .character {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.obstacle {
   position: absolute;
   width: 50px;
   height: 50px;
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.3);
 }
+
+.cell {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(202, 164, 128, 0.1); 
+}
+
+.sprite {
+  width: 50px; 
+  height: 50px;
+  background-size: contain;
+  position: absolute;
+}
+
+.sprite.idle {
+  background-image: url('/sprites/idle/idle.png');
+}
+
+.sprite.walk-up {
+  background-image: url('/sprites/idle/up.png');
+}
+
+.sprite.walk-down {
+  background-image: url('/sprites/idle/down.png');
+}
+
+.sprite.walk-left {
+  background-image: url('/sprites/idle/left.png');
+}
+
+.sprite.walk-right {
+  background-image: url('/sprites/idle/right.png');
+}
+
+@keyframes walk {
+  from { background-position: 0; }
+  to { background-position: -128px; } 
+}
+
+.sprite.walking {
+  animation: walk 1s steps(4) infinite;
+}
+
